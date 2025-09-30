@@ -42,17 +42,22 @@ uint8_t *simulate_life(uint32_t grid_dim, start_coord_t *initial_points, uint32_
 	int alive = 0;
 	int tump = 0;
 	for (;return_grid[tump] == 0;tump++)
-	;
+		;
 	tump -= grid_dim;
+	if (tump < 0)
+		tump = 0;
 	i = tump;
 	int tomp = gridsize;
 	for(;return_grid[tomp] == 0 && tomp > 0; tomp--)
-	;
+		;
 	tomp += grid_dim;
 	if (tomp > gridsize)
 	tomp -= gridsize;
 	if (grid_dim == 16)
+	{
+		i = 0;
 		tomp = gridsize;
+	}
 	while(i < tomp)
 	{
 		int row = i / grid_dim;
